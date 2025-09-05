@@ -3,14 +3,19 @@
 // Language: C++
 // Approach: Brute force (check all pairs with nested loops)
 
+#include <unordered_set>
+using namespace std;
+
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        for (size_t i = 0; i + 1 < nums.size(); ++i) {
-            for (size_t j = i + 1; j < nums.size(); ++j) {
-                if (nums[i] == nums[j]) return true;
+        unordered_set<int> seen;   // keeps track of numbers we've seen
+        for (int num : nums) {
+            if (seen.count(num)) { // if num already in set, duplicate found
+                return true;
             }
+            seen.insert(num);      // otherwise, add it to the set
         }
-        return false;
+        return false; // no duplicates
     }
 };
