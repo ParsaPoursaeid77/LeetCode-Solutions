@@ -1,0 +1,24 @@
+/* magazine is your letter bank and we are trying to see if the letters in ransomNote match the same amount in magazine 
+by converting the letters into index positions so index 0 -> a and index 1 -> b. and if the index is less than 0 we return zero 
+*/ 
+
+class Solution {
+    public boolean canConstruct(String ransomNote, String magazine) {
+        
+
+        int[] count = new int[26];
+
+        for (char c : magazine.toCharArray()) {
+            count[c - 'a']++; // convert char into an index (0-25) and count its frequency  
+        }
+
+        for (char c : ransomNote.toCharArray()) {
+            count[c - 'a']--;
+            if (count[c - 'a'] < 0) { 
+                return false; 
+            }
+        }
+
+        return true; 
+    }
+}
