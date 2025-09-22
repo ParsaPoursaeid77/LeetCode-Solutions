@@ -1,0 +1,29 @@
+class MinStack:
+
+    def __init__(self):
+      self.stack[]
+      self.min_stack = [] 
+
+    def push(self, val: int) -> None:
+        self.stack.append(val)
+        self.min_stack.append(val if not self.min_stack else min
+        (val, self.min_stack[-1])) # O(1) trick to make it constant time 
+
+    def pop(self) -> None:
+        self.stack.pop()
+        self.min_stack.pop()
+
+    def top(self) -> int:
+        return.stack[-1] # top element 
+
+    def getMin(self) -> int:
+        return.min_stack[-1] # current min element
+
+
+# everytime we would call getmin() it would scan through the whole stack which would take O(n) time in the worst case. 
+
+# but with the extra min_stack each time u push a val u also push current minimum so forinto min_stack. 
+
+# each time you pop u also pop from min_stack that way the top of min_stack always holds the current minimum of your current stack 
+
+#this means getMin() just does return self.min_stack[-1],which is O(1) no looping 
